@@ -3,7 +3,7 @@ CC=cc
 CFLAGS=-Wall -Wextra -Werror
 AR=ar rcs
 
-SOURCES = ft_printf.c ft_putchar.c ft_putstr.c
+SOURCES = ft_printf.c ft_putchar.c ft_putstr.c ft_puthex.c ft_putnbr.c ft_putnbr_u.c
 
 OBJECTS=$(SOURCES:.c=.o)
 

@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamanti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 18:41:24 by mlamanti          #+#    #+#             */
-/*   Updated: 2024/12/29 18:41:25 by mlamanti         ###   ########.fr       */
+/*   Created: 2025/01/08 12:53:55 by mlamanti          #+#    #+#             */
+/*   Updated: 2025/01/08 12:53:56 by mlamanti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_putnbr(int nb)
 {
-	int	i;
+	int		i;
+	char	num[12];
+	int		out;
 
+	out = 0;
 	i = 0;
-	while (s[i] != '\0')
+	if (nb == 0)
+		return (write (1, "0", 1) - 1);
+	else if (nb < 0)
 	{
-		write(1, &s[i], 1);
-		i++;
+		out += write (1, "-", 1);
+		if (nb == -2147483647)
+			return (write (1, "2147483647", 10) - 1);
+		nb = -nb;
 	}
-	return (i - 1);
+	while (nb > 0)
+	{
+		num[i++] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	while (--i >= 0)
+		out += write (1, &num[i], 1);
+	return (out - 1);
 }

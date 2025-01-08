@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamanti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 18:41:24 by mlamanti          #+#    #+#             */
-/*   Updated: 2024/12/29 18:41:25 by mlamanti         ###   ########.fr       */
+/*   Created: 2025/01/08 12:55:34 by mlamanti          #+#    #+#             */
+/*   Updated: 2025/01/08 12:55:36 by mlamanti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_puthex(unsigned long n)
 {
-	int	i;
+	char				*base;
+	unsigned long		len;
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i - 1);
+	base = "0123456789abcdef";
+	len = 0;
+    if (n >= 16)
+        len += ft_puthex(n / 16);
+    len += write(1, &base[n % 16], 1);
+    return (len);
 }

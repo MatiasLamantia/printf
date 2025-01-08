@@ -17,7 +17,10 @@
 # include <unistd.h>
 # include <stdio.h>
 
+int		ft_putnbr_u(unsigned int nb);
+int		ft_putnbr(int nb);
 int		ft_printf(char const *str, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
+int		ft_puthex(unsigned long n);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
 #endif
